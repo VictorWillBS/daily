@@ -2,7 +2,9 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const FormStyled = styled.form`
-  width: 350px;
+  max-width: 350px;
+  width: 100%;
+  padding: 0 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -12,13 +14,15 @@ export const FormStyled = styled.form`
     height: max-content;
     display: flex;
     margin: 30px 0;
+    max-width: 326px;
+    width: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
   && > article input {
     background-color: #0e4984;
-    width: 326px;
+    width: 100%;
     height: 42px;
     margin-bottom: 15px;
     border: none;
@@ -33,7 +37,8 @@ export const FormStyled = styled.form`
 
   button {
     cursor: pointer;
-    width: 225px;
+    max-width: 225px;
+    width: 100%;
     height: 42px;
     border: none;
     padding: 10px;
@@ -62,6 +67,7 @@ export const UserInputSide = styled.section`
   width: 30%;
   height: 100%;
   display: flex;
+  min-width: 300px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -75,14 +81,20 @@ export const UserInputSide = styled.section`
   span {
     color: #ffcd8c;
   }
+  @media (min-width: 0) and (max-width: 650px) {
+    width: 100%;
+  }
 `;
 
 export const StyledLink = styled(Link)`
   color: white;
   margin-top: 30px;
+  text-align: center;
+  padding: 0 10px;
   text-decoration: underline;
   font-family: "Roboto", sans-serif;
   font-size: 18px;
+  word-break: break-word;
   font-weight: 700;
 `;
 
@@ -92,6 +104,9 @@ export const BGFigure = styled.figure`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (min-width: 0) and (max-width: 650px) {
+    display: none;
+  }
 `;
 export const BGImage = styled.img`
   width: 100%;
