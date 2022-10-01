@@ -55,6 +55,7 @@ table {
 }
 *{
   box-sizing:border-box;
+	text-decoration:none;
 }
 `;
 
