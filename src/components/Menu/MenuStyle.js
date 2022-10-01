@@ -1,7 +1,7 @@
 import styled from "styled-components";
 export const MenuStyled = styled.section`
   position: absolute;
-  right: -160px;
+  right: 0px;
   top: 110px;
   width: 236px;
   height: 360px;
@@ -12,9 +12,8 @@ export const MenuStyled = styled.section`
   justify-content: flex-start;
   background-color: #003b76;
   border-radius: 10px 10px 10px 96px;
-
-  &&:hover {
-    right: 0px;
+  @media (min-width: 0) and (max-width: 1180px) {
+    display: none;
   }
 `;
 
@@ -25,6 +24,7 @@ export const CategoryStyled = styled.article`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
   div {
     width: 180px;
     height: 30px;
@@ -32,6 +32,19 @@ export const CategoryStyled = styled.article`
     justify-content: space-between;
     align-items: center;
   }
+  article {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    background-color: #003b76;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    :hover {
+      filter: brightness(1.1);
+    }
+  }
+
   div > figure {
     display: flex;
     justify-content: center;

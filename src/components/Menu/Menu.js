@@ -27,12 +27,14 @@ function Category({ categories }) {
   };
   return categories.map((category) => {
     return (
-      <div>
-        <figure>{hashCategories[category].icon}</figure>
-        <Link to={hashCategories[category].link}>
-          <h1>{hashCategories[category].name}</h1>
-        </Link>
-      </div>
+      <article>
+        <div>
+          <figure>{hashCategories[category].icon}</figure>
+          <Link to={hashCategories[category].link}>
+            <h1>{hashCategories[category].name}</h1>
+          </Link>
+        </div>
+      </article>
     );
   });
 }
