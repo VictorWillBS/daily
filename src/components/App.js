@@ -5,8 +5,7 @@ import { userContext } from "../context/userContext";
 import GlobalStyled from "./GlobalStyle/globalStyled";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import NavBarr from "./NavBarr/NavBar";
-import Menu from "./Menu/Menu";
+
 function App() {
   const [userData, setUserData] = useState({});
   return (
