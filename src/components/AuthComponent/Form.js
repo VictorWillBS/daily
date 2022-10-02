@@ -11,19 +11,20 @@ export default function Form({ isSignUp }) {
     event.preventDefault();
     try {
       if (isSignUp) {
-        const userCreated = await axios.post(
-          `${process.env.REACT_APP_URL_API}signup`,
-          dataUser
-        );
-        setUserData({ ...userCreated });
+        await axios.post(`${process.env.REACT_APP_URL_API}/signup`, dataUser);
         return;
       }
-      const token = await axios.post(`${process.env.REACT_APP_URL_API}signin`, {
-        email: dataUser.email,
-        password: dataUser.password,
-      });
+
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_URL_API}/signin`,
+        {
+          email: dataUser.email,
+          password: dataUser.password,
+        }
+      );
+      setUserData({ ...userData, ...data });
+
       isSignUp ? navigate("/") : navigate("/answer");
-      setUserData({ ...userData, token });
     } catch (error) {
       alert(`não foi possível concluir ${isSignUp ? "cadastro" : "login"}.`);
     }
