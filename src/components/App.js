@@ -16,11 +16,6 @@ function App() {
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/sign-up" element={<SingupPage />} />
-        </Routes>
-      </BrowserRouter>
-      <BrowserRouter>
-        {/* <Menu /> */}
-        <Routes>
           <Route path="/answer" element={<AnswerPage />} />
         </Routes>
       </BrowserRouter>

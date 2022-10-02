@@ -22,6 +22,7 @@ export default function Form({ isSignUp }) {
         email: dataUser.email,
         password: dataUser.password,
       });
+      isSignUp ? navigate("/") : navigate("/answer");
       setUserData({ ...userData, token });
     } catch (error) {
       alert(`não foi possível concluir ${isSignUp ? "cadastro" : "login"}.`);
