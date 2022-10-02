@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { userContext } from "../../context/userContext";
 import {
   UserArticle,
   PageNameArticle,
@@ -5,7 +7,10 @@ import {
   NavBarrContainer,
 } from "./NavBarStyle";
 export default function NavBarr() {
+  const { userData } = useContext(userContext);
+
   const pageName = "Responder";
+  console.log(userData);
   return (
     <NavBarrContainer>
       <TitleArticle>
@@ -17,7 +22,9 @@ export default function NavBarr() {
       <PageNameArticle>
         <h1>{pageName}</h1>
       </PageNameArticle>
-      <UserArticle></UserArticle>
+      <UserArticle>
+        <img src={userData.photo} alt="User" />
+      </UserArticle>
     </NavBarrContainer>
   );
 }
