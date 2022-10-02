@@ -1,8 +1,26 @@
 import styled from "styled-components";
-export default function QuestionCards() {
+import { IconContext } from "react-icons";
+import { IoCaretBackCircleOutline } from "react-icons/io5";
+export default function QuestionCards({ children }) {
   return (
     <CardContainer>
-      <h4>pergunta</h4>
+      <TextContainer>
+        <h4>{children} </h4>
+      </TextContainer>
+      <IconContext.Provider
+        value={{
+          style: {
+            width: "28px",
+            height: "28px",
+            color: "black",
+            fontWeight: "bolder",
+          },
+        }}
+      >
+        <IconContainer>
+          <IoCaretBackCircleOutline />
+        </IconContainer>
+      </IconContext.Provider>
     </CardContainer>
   );
 }
@@ -12,9 +30,16 @@ const CardContainer = styled.article`
   width: 100%;
   min-height: 73px;
   margin: 20px 0;
-  border-radius: 8px;
-  box-shadow: 0 04px 10px #000;
+  padding: 20px;
+  border-radius: 11px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   background-color: #17a1fa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+const TextContainer = styled.article`
+  max-width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,4 +49,11 @@ const CardContainer = styled.article`
     font-weight: 400;
     font-size: 20px;
   }
+`;
+
+const IconContainer = styled.article`
+  max-width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
