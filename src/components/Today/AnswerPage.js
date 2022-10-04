@@ -7,8 +7,11 @@ import EmotionCard from "../Cards/EmotionCard";
 import QuestionCards from "../Cards/QuestionsCards";
 import Menu from "../Menu/Menu";
 import NavBarr from "../NavBarr/NavBar";
+import CreateQuestion from "../Cards/createQuestion";
 export default function AnswerPage() {
   const [questions, setQuestions] = useState(null);
+  const [changeQuestion, setChangeQuestion] = useState(false);
+
   const { userData } = useContext(userContext);
   const navigate = useNavigate();
   useEffect(() => {
@@ -23,13 +26,13 @@ export default function AnswerPage() {
     );
     promise
       .then((res) => {
-        setQuestions([...res.data]);
+        setQuestions([...res.data].reverse());
       })
       .catch((err) => {
         alert("deu ruim");
         navigate("/");
       });
-  }, []);
+  }, [changeQuestion]);
   return (
     <ContainerPage>
       <NavBarr />
@@ -43,14 +46,23 @@ export default function AnswerPage() {
             <InputSide>
               <EmotionCard />
               <QuestionContainer>
-                {questions
+                <div className="question-Box">
+                  <CreateQuestion
+                    changeQuestion={changeQuestion}
+                    setChangeQuestion={setChangeQuestion}
+                  />
+
+                  {questions
                   ? questions.map((question) => {
                       return <QuestionCards>{question.question}</QuestionCards>;
-                    })
-                  : ""}
+                      })
+                    : ""}
+                </div>
               </QuestionContainer>
             </InputSide>
-            <InputSide2></InputSide2>
+            <InputSide2
+              onClick={() => console.log(changeQuestion)}
+            ></InputSide2>
           </div>
         </Console>
       </DisplayContainer>
@@ -90,7 +102,7 @@ const Console = styled.section`
 
 const QuestionContainer = styled.section`
   width: 100%;
-  height: 480px;
+  min-height: 530px;
   margin-top: 10px;
   display: flex;
   flex-direction: column;
@@ -99,6 +111,9 @@ const QuestionContainer = styled.section`
   overflow: scroll;
   &&::-webkit-scrollbar {
     width: 0px;
+  }
+  .question-Box {
+    max-height: 500px;
   }
 `;
 
