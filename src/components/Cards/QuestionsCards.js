@@ -44,6 +44,9 @@ export default function QuestionCards({
 
   async function deleteQuestion(event) {
     event.preventDefault();
+    if (answered) {
+      return;
+    }
     const config = {
       headers: {
         Authorization: `Bearer ${userData.token}`,
