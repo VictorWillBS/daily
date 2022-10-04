@@ -33,7 +33,11 @@ export default function EmotionCard() {
   return (
     <Container>
       <EmotionFace color={color}>
-        <figure>
+        <figure
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
           <IconContext.Provider
             value={{
               style: {
@@ -51,23 +55,22 @@ export default function EmotionCard() {
       <EmotionName color={color}>
         <InputStyled
           color={color}
-          type="text"
+          type="option"
           placeholder="Como você se sente?"
           list="sentimentos"
           value={felling}
           onChange={inputControl}
-        />
-        <datalist id="sentimentos">
+        >
           <option value="Alegre">Aconteceram coisas boas hoje.</option>
-          <option value="Neutro">Não foi nem muito bom e nem ruim.</option>
-          <option value="Triste">Aconteceram algumas coisas ruins hoje.</option>
-        </datalist>
+          <option value="Neutro">Foi um dia Neutro.</option>
+          <option value="Triste">Aconteceram coisas ruins hoje.</option>
+        </InputStyled>
       </EmotionName>
     </Container>
   );
 }
 
-const Container = styled.section`
+const Container = styled.form`
   max-width: 380px;
   width: 100%;
   height: 73px;
@@ -79,7 +82,8 @@ const Container = styled.section`
 const EmotionName = styled.article`
   max-width: 270px;
   width: 100%;
-  height: 73px;
+  min-height: 73px;
+  padding: 10px;
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
   background-color: ${(props) => props.color || "#FFCD8C"};
@@ -107,7 +111,7 @@ const EmotionFace = styled.article`
   align-items: center;
 `;
 
-const InputStyled = styled.input`
+const InputStyled = styled.select`
   width: 100%;
   height: 30px;
   background-color: ${(props) => props.color || "#FFCD8C"};
