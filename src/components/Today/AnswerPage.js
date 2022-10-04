@@ -53,8 +53,31 @@ export default function AnswerPage() {
                   />
 
                   {questions
-                  ? questions.map((question) => {
-                      return <QuestionCards>{question.question}</QuestionCards>;
+                    ? questions.map((question, index) => {
+                        if (question.answer.length) {
+                          return (
+                            <QuestionCards
+                              id={question.id}
+                              key={index}
+                              isAnswered={true}
+                              setChangeQuestion={setChangeQuestion}
+                              changeQuestion={changeQuestion}
+                            >
+                              {question.answer[0].answer}
+                            </QuestionCards>
+                          );
+                        }
+                        return (
+                          <QuestionCards
+                            id={question.id}
+                            key={index}
+                            answered={false}
+                            setChangeQuestion={setChangeQuestion}
+                            changeQuestion={changeQuestion}
+                          >
+                            {question.question}
+                          </QuestionCards>
+                        );
                       })
                     : ""}
                 </div>

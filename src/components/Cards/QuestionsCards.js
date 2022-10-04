@@ -1,12 +1,63 @@
 import styled from "styled-components";
+import axios from "axios";
 import { IconContext } from "react-icons";
-import { IoCaretBackCircleOutline } from "react-icons/io5";
-export default function QuestionCards({ children }) {
+import { useContext, useState } from "react";
+import { userContext } from "../../context/userContext";
+import {
+  IoCaretBackCircleOutline,
+  IoCloseCircleOutline,
+} from "react-icons/io5";
+export default function QuestionCards({
+  id,
+  children,
+  isAnswered,
+  setChangeQuestion,
+  changeQuestion,
+}) {
+  const [describe, setDescribe] = useState("");
+  const [answered, setAnswered] = useState(isAnswered);
+
+  const { userData } = useContext(userContext);
+  function inputControl(e) {
+    setDescribe(e.target.value);
+  }
+
+  async function submit(event) {
+    event.preventDefault();
+    if (answered) {
+      return;
+    }
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userData.token}`,
+      },
+    };
+    const body = { questionId: id, answer: describe };
+    await axios
+      .post(`${process.env.REACT_APP_URL_API}/answer`, body, config)
+      .then((res) => {
+        console.log("postei");
+        setAnswered(true);
+        setChangeQuestion(!changeQuestion);
+      });
+  }
+
+  async function deleteQuestion(event) {
+    event.preventDefault();
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userData.token}`,
+      },
+    };
+    await axios
+      .delete(`${process.env.REACT_APP_URL_API}/questions/${id}`, config)
+      .then((res) => {
+        setChangeQuestion(!changeQuestion);
+      });
+  }
+
   return (
-    <CardContainer>
-      <TextContainer>
-        <h4>{children} </h4>
-      </TextContainer>
+    <CardContainer color={answered}>
       <IconContext.Provider
         value={{
           style: {
@@ -18,7 +69,31 @@ export default function QuestionCards({ children }) {
         }}
       >
         <IconContainer>
-          <IoCaretBackCircleOutline />
+          <button
+            onClick={(e) => {
+              deleteQuestion(e);
+            }}
+          >
+            <IoCloseCircleOutline />
+          </button>
+        </IconContainer>
+        <InputStyled
+          rows="3"
+          type="textarea"
+          placeholder={children}
+          value={describe}
+          onChange={(e) => {
+            inputControl(e);
+          }}
+        />
+        <IconContainer>
+          <button
+            onClick={(e) => {
+              submit(e);
+            }}
+          >
+            <IoCaretBackCircleOutline />
+          </button>
         </IconContainer>
       </IconContext.Provider>
     </CardContainer>
@@ -33,27 +108,48 @@ const CardContainer = styled.article`
   padding: 20px;
   border-radius: 11px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  background-color: #17a1fa;
+  background-color: ${(props) => (props.color ? "#17FAA8" : "#17a1fa")};
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
-const TextContainer = styled.article`
-  max-width: 80%;
+
+const IconContainer = styled.form`
+  max-width: 20%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  h4 {
+  justify-content: center;
+  button {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+  }
+`;
+
+const InputStyled = styled.textarea`
+  width: 100%;
+  height: auto !important;
+  resize: none;
+  border: none;
+  overflow-y: scroll;
+  text-align: center;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0);
+  &&,
+  &&::placeholder {
+    text-align: center;
+    color: #000;
     font-family: "Roboto", sans-serif;
     font-style: italic;
     font-weight: 400;
     font-size: 20px;
   }
-`;
-
-const IconContainer = styled.article`
-  max-width: 20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  &&:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+  }
+  &&::-webkit-scrollbar {
+    width: 0px;
+  }
 `;
