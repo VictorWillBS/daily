@@ -19,6 +19,7 @@ export const TitleArticle = styled.article`
   width: max-content;
   height: fit-content;
   padding-top: 7px;
+  cursor: pointer;
   h1 {
     color: #ffffff;
     font-size: 55px;

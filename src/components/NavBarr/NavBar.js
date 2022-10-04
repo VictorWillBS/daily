@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { userContext } from "../../context/userContext";
 import {
   UserArticle,
@@ -8,12 +9,15 @@ import {
 } from "./NavBarStyle";
 export default function NavBarr() {
   const { userData } = useContext(userContext);
-
+  const navigate = useNavigate();
   const pageName = "Responder";
-  console.log(userData);
   return (
     <NavBarrContainer>
-      <TitleArticle>
+      <TitleArticle
+        onClick={() => {
+          navigate("/");
+        }}
+      >
         <h1 className="lg">
           DAI<span>LY</span>
         </h1>
