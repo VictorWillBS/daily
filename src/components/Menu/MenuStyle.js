@@ -13,12 +13,12 @@ export const MenuStyled = styled.section`
   justify-content: flex-start;
   background-color: #003b76;
   border-radius: 10px 10px 10px 96px;
-  @media (min-width: 0) and (max-width: 1300px) {
-    width: 5%;
+  @media (min-width: 0) and (max-width: 1500px) {
+    width: 70px;
     height: 240px;
     padding: 20px 0;
   }
-  @media (min-width: 0) and (max-width: 1135px) {
+  @media (min-width: 0) and (max-width: 950px) {
     display: none;
   }
 `;
@@ -65,7 +65,7 @@ export const CategoryStyled = styled.article`
     font-size: 25px;
     font-weight: 700;
   }
-  @media (min-width: 0) and (max-width: 1300px) {
+  @media (min-width: 0) and (max-width: 1500px) {
     && {
       height: 90%;
     }
