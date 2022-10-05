@@ -4,7 +4,7 @@ export const ContainerPage = styled.section`
   top: 150px;
   width: 100vw;
   height: 100vh;
-  padding: 0 60px;
+  padding: 0 5%;
 `;
 export const DisplayContainer = styled.section`
   display: flex;
@@ -52,18 +52,28 @@ export const QuestionContainer = styled.section`
 
 export const InputSide = styled.section`
   width: 50%;
-  min-width: 380px;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
   padding: 20px;
+  @media (min-width: 0) and (max-width: 800px) {
+    && {
+      width: 100%;
+    }
+  }
 `;
 export const CalendarSide = styled.section`
   width: 50%;
   height: 100%;
   padding: 20px;
+  @media (min-width: 0) and (max-width: 800px) {
+    && {
+      display: none;
+    }
+  }
 `;
 
 export const Decoration = styled.section`

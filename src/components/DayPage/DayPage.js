@@ -54,6 +54,10 @@ export default function DayPage() {
               <CalendarContent />
             </LeftContent>
             <RightContent>
+              <div className="emotion-box">
+                <EmotionAnswered date={date} config={config} />
+              </div>
+
               {answered.length
                 ? answered.map((answer) => {
                     return (

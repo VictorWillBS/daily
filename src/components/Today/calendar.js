@@ -30,4 +30,9 @@ const CalendarContainer = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  .react-calendar {
+    width: 100%;
+    max-width: 380px;
+    border-radius: 5%;
+  }
 `;

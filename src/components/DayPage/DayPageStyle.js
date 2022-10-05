@@ -4,7 +4,7 @@ export const ContainerPage = styled.section`
   top: 150px;
   width: 100vw;
   height: 100vh;
-  padding: 0 60px;
+  padding: 0 5%;
 `;
 export const DisplayContainer = styled.section`
   display: flex;
@@ -42,11 +42,19 @@ export const RightContent = styled.section`
   justify-content: flex-start;
   align-items: center;
   overflow: scroll;
+  .emotion-box {
+    display: none;
+    width: 100%;
+  }
   &&::-webkit-scrollbar {
     width: 0px;
   }
-  .question-Box {
-    max-height: 500px;
+  @media (min-width: 0) and (max-width: 750px) {
+    .emotion-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 `;
 
@@ -68,6 +76,11 @@ export const LeftContent = styled.section`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  @media (min-width: 0) and (max-width: 750px) {
+    && {
+      display: none;
+    }
+  }
 `;
 
 export const Decoration = styled.section`

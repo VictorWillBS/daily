@@ -3,7 +3,8 @@ export const MenuStyled = styled.section`
   position: absolute;
   right: 0px;
   top: 110px;
-  width: 236px;
+  max-width: 236px;
+  width: 100%;
   height: 360px;
   padding-top: 50px;
   display: flex;
@@ -12,7 +13,12 @@ export const MenuStyled = styled.section`
   justify-content: flex-start;
   background-color: #003b76;
   border-radius: 10px 10px 10px 96px;
-  @media (min-width: 0) and (max-width: 1180px) {
+  @media (min-width: 0) and (max-width: 1300px) {
+    width: 5%;
+    height: 240px;
+    padding: 20px 0;
+  }
+  @media (min-width: 0) and (max-width: 1135px) {
     display: none;
   }
 `;
@@ -26,7 +32,8 @@ export const CategoryStyled = styled.article`
   align-items: center;
 
   div {
-    width: 180px;
+    max-width: 180px;
+    width: 100%;
     height: 30px;
     display: flex;
     justify-content: space-between;
@@ -57,5 +64,16 @@ export const CategoryStyled = styled.article`
     font-family: "Roboto", sans-serif;
     font-size: 25px;
     font-weight: 700;
+  }
+  @media (min-width: 0) and (max-width: 1300px) {
+    && {
+      height: 90%;
+    }
+    article {
+      width: initial;
+    }
+    a {
+      display: none;
+    }
   }
 `;
