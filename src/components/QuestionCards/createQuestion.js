@@ -5,7 +5,11 @@ import axios from "axios";
 import { userContext } from "../../context/userContext";
 import { IoAddCircleOutline } from "react-icons/io5";
 
-export default function CreateQuestion({ setChangeQuestion, changeQuestion }) {
+export default function CreateQuestion({
+  setChangeQuestion,
+  changeQuestion,
+  config,
+}) {
   const [describe, setDescribe] = useState("");
   const { userData } = useContext(userContext);
   function inputControl(e) {
@@ -15,11 +19,6 @@ export default function CreateQuestion({ setChangeQuestion, changeQuestion }) {
   async function submit(event) {
     event.preventDefault();
 
-    const config = {
-      headers: {
-        Authorization: `Bearer ${userData.token}`,
-      },
-    };
     const body = { question: describe };
     await axios
       .post(`${process.env.REACT_APP_URL_API}/question/create`, body, config)

@@ -13,6 +13,7 @@ export default function QuestionCards({
   isAnswered,
   setChangeQuestion,
   changeQuestion,
+  config,
 }) {
   const [describe, setDescribe] = useState("");
   const [answered, setAnswered] = useState(isAnswered);
@@ -27,11 +28,6 @@ export default function QuestionCards({
     if (answered) {
       return;
     }
-    const config = {
-      headers: {
-        Authorization: `Bearer ${userData.token}`,
-      },
-    };
     const body = { questionId: id, answer: describe };
     await axios
       .post(`${process.env.REACT_APP_URL_API}/answer`, body, config)
@@ -47,11 +43,6 @@ export default function QuestionCards({
     if (answered) {
       return;
     }
-    const config = {
-      headers: {
-        Authorization: `Bearer ${userData.token}`,
-      },
-    };
     await axios
       .delete(`${process.env.REACT_APP_URL_API}/questions/${id}`, config)
       .then((res) => {

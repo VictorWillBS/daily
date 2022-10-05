@@ -23,7 +23,8 @@ export default function Form({ isSignUp }) {
         }
       );
       setUserData({ ...userData, ...data });
-
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user_img", data.photo);
       isSignUp ? navigate("/") : navigate("/answer");
     } catch (error) {
       alert(`não foi possível concluir ${isSignUp ? "cadastro" : "login"}.`);

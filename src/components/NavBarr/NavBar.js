@@ -27,7 +27,10 @@ export default function NavBarr() {
         <h1>{pageName}</h1>
       </PageNameArticle>
       <UserArticle>
-        <img src={userData.photo} alt="User" />
+        <img
+          src={userData.photo || localStorage.getItem("user_img")}
+          alt="User"
+        />
       </UserArticle>
     </NavBarrContainer>
   );

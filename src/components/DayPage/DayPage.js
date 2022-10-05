@@ -15,6 +15,7 @@ import {
   LeftContent,
 } from "./DayPageStyle";
 import EmotionAnswered from "../EmotionCards/EmotionAnswerd";
+import Menu from "../Menu/Menu";
 
 export default function DayPage() {
   const { userData } = useContext(userContext);
@@ -23,7 +24,9 @@ export default function DayPage() {
   const { date } = useParams();
   const config = {
     headers: {
-      Authorization: `Bearer ${userData.token}`,
+      Authorization: `Bearer ${
+        localStorage.getItem("token") || userData.token
+      }`,
     },
   };
   useEffect(() => {
@@ -37,12 +40,13 @@ export default function DayPage() {
       })
       .catch((err) => {
         alert("deu ruim");
-        navigate("/");
+        navigate("/sign-in");
       });
   }, [date]);
   return (
     <ContainerPage>
       <NavBarr />
+      <Menu />
       <DisplayContainer>
         <Console>
           <Decoration>

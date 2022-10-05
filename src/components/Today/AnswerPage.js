@@ -21,14 +21,15 @@ export default function AnswerPage() {
   const [questions, setQuestions] = useState(null);
   const [changeQuestion, setChangeQuestion] = useState(false);
   const { userData } = useContext(userContext);
-
+  const config = {
+    headers: {
+      Authorization: `Bearer ${
+        localStorage.getItem("token") || userData.token
+      }`,
+    },
+  };
   const navigate = useNavigate();
   useEffect(() => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${userData.token}`,
-      },
-    };
     const promise = axios.get(
       `${process.env.REACT_APP_URL_API}/questions`,
       config
@@ -39,7 +40,7 @@ export default function AnswerPage() {
       })
       .catch((err) => {
         alert("deu ruim");
-        navigate("/");
+        navigate("/sign-in");
       });
   }, [changeQuestion]);
   return (
@@ -59,6 +60,7 @@ export default function AnswerPage() {
                   <CreateQuestion
                     changeQuestion={changeQuestion}
                     setChangeQuestion={setChangeQuestion}
+                    config={config}
                   />
 
                   {questions
@@ -71,6 +73,7 @@ export default function AnswerPage() {
                               isAnswered={true}
                               setChangeQuestion={setChangeQuestion}
                               changeQuestion={changeQuestion}
+                              config={config}
                             >
                               {question.answer[0].answer}
                             </QuestionCards>
@@ -83,6 +86,7 @@ export default function AnswerPage() {
                             answered={false}
                             setChangeQuestion={setChangeQuestion}
                             changeQuestion={changeQuestion}
+                            config={config}
                           >
                             {question.question}
                           </QuestionCards>
