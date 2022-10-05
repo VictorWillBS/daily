@@ -1,18 +1,27 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import {
+  ContainerPage,
+  Decoration,
+  DisplayContainer,
+  Console,
+  QuestionContainer,
+  InputSide,
+  CalendarSide,
+} from "./TodayAnswerStyle";
 import { userContext } from "../../context/userContext";
-import EmotionCard from "../Cards/EmotionCard";
-import QuestionCards from "../Cards/QuestionsCards";
+import EmotionCard from "../EmotionCards/EmotionCard";
+import QuestionCards from "../QuestionCards/QuestionsCards";
 import Menu from "../Menu/Menu";
 import NavBarr from "../NavBarr/NavBar";
-import CreateQuestion from "../Cards/createQuestion";
+import CreateQuestion from "../QuestionCards/createQuestion";
+import CalendarContent from "./calendar";
 export default function AnswerPage() {
   const [questions, setQuestions] = useState(null);
   const [changeQuestion, setChangeQuestion] = useState(false);
-
   const { userData } = useContext(userContext);
+
   const navigate = useNavigate();
   useEffect(() => {
     const config = {
@@ -58,7 +67,7 @@ export default function AnswerPage() {
                           return (
                             <QuestionCards
                               id={question.id}
-                              key={index}
+                              key={question.id}
                               isAnswered={true}
                               setChangeQuestion={setChangeQuestion}
                               changeQuestion={changeQuestion}
@@ -70,7 +79,7 @@ export default function AnswerPage() {
                         return (
                           <QuestionCards
                             id={question.id}
-                            key={index}
+                            key={question.id}
                             answered={false}
                             setChangeQuestion={setChangeQuestion}
                             changeQuestion={changeQuestion}
@@ -83,91 +92,12 @@ export default function AnswerPage() {
                 </div>
               </QuestionContainer>
             </InputSide>
-            <InputSide2
-              onClick={() => console.log(changeQuestion)}
-            ></InputSide2>
+            <CalendarSide onClick={() => console.log(changeQuestion)}>
+              <CalendarContent />
+            </CalendarSide>
           </div>
         </Console>
       </DisplayContainer>
     </ContainerPage>
   );
 }
-const ContainerPage = styled.section`
-  top: 150px;
-  width: 100vw;
-  height: 100vh;
-  padding: 0 60px;
-`;
-const DisplayContainer = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 130px;
-  width: 100%;
-  height: 100%;
-`;
-const Console = styled.section`
-  max-width: 1030px;
-  width: 100%;
-  max-height: 750px;
-  height: 100%;
-  display: flex;
-  padding-top: 1.5%;
-  flex-direction: column;
-  border-radius: 60px;
-  background-color: #003b76;
-  padding: 20px;
-  && > div {
-    display: flex;
-    flex-direction: row;
-  }
-`;
-
-const QuestionContainer = styled.section`
-  width: 100%;
-  min-height: 530px;
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  overflow: scroll;
-  &&::-webkit-scrollbar {
-    width: 0px;
-  }
-  .question-Box {
-    max-height: 500px;
-  }
-`;
-
-const InputSide = styled.section`
-  width: 50%;
-  min-width: 380px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  padding: 20px;
-`;
-const InputSide2 = styled.section`
-  width: 50%;
-  height: 100%;
-  background-color: yellow;
-  padding: 20px;
-`;
-
-const Decoration = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 20px;
-  div {
-    width: 120px;
-    background-color: #ffffff;
-    height: 12px;
-    border-radius: 50px;
-  }
-  margin-bottom: 5px;
-`;
