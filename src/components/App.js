@@ -14,9 +14,9 @@ function App() {
       <BrowserRouter>
         <GlobalStyled />
         <Routes>
-          <Route path="/" element={<LoginPage />} />
+          <Route path="/sign-in" element={<LoginPage />} />
           <Route path="/sign-up" element={<SingupPage />} />
-          <Route path="/answer" element={<AnswerPage />} />
+          <Route path="/" element={<AnswerPage />} />
           <Route path="/day/:date" element={<DayPage />} />
         </Routes>
       </BrowserRouter>
