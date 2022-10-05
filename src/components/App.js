@@ -5,6 +5,7 @@ import { userContext } from "../context/userContext";
 import GlobalStyled from "./GlobalStyle/globalStyled";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import DayPage from "./DayPage/DayPage";
 
 function App() {
   const [userData, setUserData] = useState({});
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<LoginPage />} />
           <Route path="/sign-up" element={<SingupPage />} />
           <Route path="/answer" element={<AnswerPage />} />
+          <Route path="/day/:date" element={<DayPage />} />
         </Routes>
       </BrowserRouter>
     </userContext.Provider>
