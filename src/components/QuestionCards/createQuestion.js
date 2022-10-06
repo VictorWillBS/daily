@@ -52,6 +52,7 @@ export default function CreateQuestion({
         >
           <IconContainer>
             <button
+              className="create"
               onClick={(e) => {
                 submit(e);
               }}
@@ -80,13 +81,24 @@ const CardContainer = styled.article`
 `;
 
 const IconContainer = styled.form`
-  max-width: 20%;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   button {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+
     border: none;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: #ffe177;
+  }
+  .create:hover {
+    background-color: #357c13;
   }
 `;
 
