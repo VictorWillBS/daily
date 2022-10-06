@@ -45,7 +45,7 @@ export default function AnswerPage() {
   return (
     <ContainerPage>
       <MessageAlert alert={alert} />
-      <NavBarr />
+      <NavBarr name="Perguntas do Dia" />
       <Menu />
       <DisplayContainer>
         <Console>

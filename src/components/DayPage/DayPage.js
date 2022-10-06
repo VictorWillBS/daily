@@ -16,17 +16,17 @@ import {
 } from "./DayPageStyle";
 import EmotionAnswered from "../EmotionCards/EmotionAnswerd";
 import Menu from "../Menu/Menu";
+import MessageAlert from "../MessageAlert/MessageAlert";
 
 export default function DayPage() {
-  const { userData } = useContext(userContext);
+  const [alert, setAlert] = useState(null);
+
   const navigate = useNavigate();
   const [answered, setAnswered] = useState([]);
   const { date } = useParams();
   const config = {
     headers: {
-      Authorization: `Bearer ${
-        localStorage.getItem("token") || userData.token
-      }`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   };
   useEffect(() => {
@@ -39,13 +39,21 @@ export default function DayPage() {
         setAnswered([...res.data].reverse());
       })
       .catch((err) => {
-        alert("deu ruim");
-        navigate("/sign-in");
+        setAlert({
+          type: "Error",
+          msg: err.response.data,
+          status: err.response.status,
+        });
+        setTimeout(() => {
+          navigate("/sign-in");
+        }, 5000);
       });
   }, [date]);
   return (
     <ContainerPage>
-      <NavBarr />
+      <MessageAlert alert={alert} />
+
+      <NavBarr name={`Dias Respondidos`} />
       <Menu />
       <DisplayContainer>
         <Console>
