@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import defaultAvatar from "../../assets/images/user_default_avatar.svg";
 import { userContext } from "../../context/userContext";
 import {
   UserArticle,
@@ -28,7 +29,9 @@ export default function NavBarr() {
       </PageNameArticle>
       <UserArticle>
         <img
-          src={userData.photo || localStorage.getItem("user_img")}
+          src={
+            userData.photo || localStorage.getItem("user_img") || defaultAvatar
+          }
           alt="User"
         />
       </UserArticle>

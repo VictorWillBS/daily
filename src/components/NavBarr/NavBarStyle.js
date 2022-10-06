@@ -54,13 +54,15 @@ export const PageNameArticle = styled.article`
 `;
 
 export const UserArticle = styled.article`
-  width: 70px;
-  height: 70px;
+  width: 74px;
+  height: 74px;
   border-radius: 100%;
+  border: 2px solid #000;
+
+  background-color: white;
   img {
     width: 70px;
     height: 70px;
-    border: 2px solid #000;
     object-fit: cover;
     border-radius: 100%;
   }
