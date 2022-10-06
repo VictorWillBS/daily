@@ -13,18 +13,13 @@ import { MdOutlineHelpOutline } from "react-icons/md";
 import { userContext } from "../../context/userContext";
 import axios from "axios";
 
-export default function EmotionCard() {
+export default function EmotionCard({ config }) {
   const day = generateDate(new Date());
   const [felling, setFelling] = useState("");
   const [color, setColor] = useState("");
   const [emoji, setEmoji] = useState("");
   const [answered, setAnswered] = useState(false);
-  const { userData } = useContext(userContext);
-  const config = {
-    headers: {
-      Authorization: `Bearer ${userData.token}`,
-    },
-  };
+
   useEffect(() => {
     switch (felling) {
       case "Triste":
@@ -105,7 +100,6 @@ export default function EmotionCard() {
         <InputStyled
           color={color}
           type="option"
-          placeholder="Como você se sente?"
           list="sentimentos"
           disabled={answered}
           value={felling}
