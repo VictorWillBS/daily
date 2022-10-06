@@ -9,6 +9,7 @@ export default function CreateQuestion({
   setChangeQuestion,
   changeQuestion,
   config,
+  setAlert,
 }) {
   const [describe, setDescribe] = useState("");
   const { userData } = useContext(userContext);
@@ -25,6 +26,20 @@ export default function CreateQuestion({
       .then((res) => {
         setDescribe("");
         setChangeQuestion(!changeQuestion);
+        setAlert({ type: "sucess", msg: "Pergunta criada com sucesso" });
+      })
+      .catch((err) => {
+        if (err.response.status === 400) {
+          setAlert({
+            type: "error",
+            status: 400,
+            msg: "Você atingiu o limite de perguntas.",
+          });
+        }
+        setAlert({
+          type: "error",
+          msg: err.response.data,
+        });
       });
   }
 

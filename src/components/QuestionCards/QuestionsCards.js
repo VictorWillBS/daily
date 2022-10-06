@@ -7,6 +7,7 @@ import {
   IoCaretBackCircleOutline,
   IoCloseCircleOutline,
 } from "react-icons/io5";
+
 export default function QuestionCards({
   id,
   children,
@@ -14,6 +15,7 @@ export default function QuestionCards({
   setChangeQuestion,
   changeQuestion,
   config,
+  setAlert,
 }) {
   const [describe, setDescribe] = useState("");
   const [answered, setAnswered] = useState(isAnswered);
@@ -26,23 +28,31 @@ export default function QuestionCards({
   async function submit(event) {
     event.preventDefault();
     if (answered) {
+      setAlert({
+        type: "error",
+        msg: "Essa pergunta já foi respondia, não é possível editá-la.",
+      });
       return;
     }
     const body = { questionId: id, answer: describe };
     await axios
       .post(`${process.env.REACT_APP_URL_API}/answer`, body, config)
       .then((res) => {
-        console.log("postei");
         setAnswered(true);
         setChangeQuestion(!changeQuestion);
+        setAlert({ type: "sucess", msg: "Pergunta Respondida! " });
+      })
+      .catch((err) => {
+        setAlert({
+          type: "error",
+          msg: err.response.data,
+        });
       });
   }
 
   async function deleteQuestion(event) {
     event.preventDefault();
-    if (answered) {
-      return;
-    }
+
     await axios
       .delete(`${process.env.REACT_APP_URL_API}/questions/${id}`, config)
       .then((res) => {

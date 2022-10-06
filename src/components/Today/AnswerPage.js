@@ -17,15 +17,14 @@ import Menu from "../Menu/Menu";
 import NavBarr from "../NavBarr/NavBar";
 import CreateQuestion from "../QuestionCards/createQuestion";
 import CalendarContent from "./calendar";
+import MessageAlert from "../MessageAlert/MessageAlert";
 export default function AnswerPage() {
   const [questions, setQuestions] = useState(null);
+  const [alert, setAlert] = useState(null);
   const [changeQuestion, setChangeQuestion] = useState(false);
-  const { userData } = useContext(userContext);
   const config = {
     headers: {
-      Authorization: `Bearer ${
-        localStorage.getItem("token") || userData.token
-      }`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   };
   const navigate = useNavigate();
@@ -45,6 +44,7 @@ export default function AnswerPage() {
   }, [changeQuestion]);
   return (
     <ContainerPage>
+      <MessageAlert alert={alert} />
       <NavBarr />
       <Menu />
       <DisplayContainer>
@@ -54,13 +54,14 @@ export default function AnswerPage() {
           </Decoration>
           <div className="subConsole">
             <InputSide>
-              <EmotionCard />
+              <EmotionCard config={config} />
               <QuestionContainer>
                 <div className="question-Box">
                   <CreateQuestion
                     changeQuestion={changeQuestion}
                     setChangeQuestion={setChangeQuestion}
                     config={config}
+                    setAlert={setAlert}
                   />
 
                   {questions
@@ -74,6 +75,7 @@ export default function AnswerPage() {
                               setChangeQuestion={setChangeQuestion}
                               changeQuestion={changeQuestion}
                               config={config}
+                              setAlert={setAlert}
                             >
                               {question.answer[0].answer}
                             </QuestionCards>
@@ -87,6 +89,7 @@ export default function AnswerPage() {
                             setChangeQuestion={setChangeQuestion}
                             changeQuestion={changeQuestion}
                             config={config}
+                            setAlert={setAlert}
                           >
                             {question.question}
                           </QuestionCards>
