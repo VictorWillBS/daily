@@ -6,7 +6,7 @@ export const MenuStyled = styled.section`
   max-width: 236px;
   width: 100%;
   height: 360px;
-  padding-top: 50px;
+  padding-top: 30px;
   display: flex;
   align-items: center;
   flex-direction: column;
