@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ContainerPage = styled.section`
   top: 150px;
   width: 100vw;
-  height: 100vh;
+  height: 80%;
   padding: 0 5%;
 `;
 export const DisplayContainer = styled.section`
@@ -41,11 +41,12 @@ export const QuestionContainer = styled.section`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  overflow: scroll;
-  &&::-webkit-scrollbar {
+  .question-Box::-webkit-scrollbar {
     width: 0px;
   }
   .question-Box {
+    border-radius: 10px;
+    overflow: scroll;
     max-height: 500px;
   }
 `;
