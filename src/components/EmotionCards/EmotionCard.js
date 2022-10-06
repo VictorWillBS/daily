@@ -37,6 +37,7 @@ export default function EmotionCard({ config }) {
         break;
       default:
         setEmoji(<MdOutlineHelpOutline />);
+        setColor("#BF7EFF");
 
         return;
     }

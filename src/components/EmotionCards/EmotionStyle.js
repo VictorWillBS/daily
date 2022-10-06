@@ -24,12 +24,18 @@ export const EmotionName = styled.article`
     font-family: "Roboto", sans-serif;
     font-style: italic;
     font-weight: 400;
+    word-break: break-all;
     font-size: 20px;
+  }
+  option {
+    width: 100%;
+    min-height: 100%;
+    word-break: break-all;
   }
 `;
 
 export const EmotionFace = styled.article`
-  width: 60px;
+  min-width: 60px;
   height: 60px;
   margin-right: 10px;
   padding-top: 4px;
