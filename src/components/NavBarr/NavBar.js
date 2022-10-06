@@ -8,10 +8,9 @@ import {
   TitleArticle,
   NavBarrContainer,
 } from "./NavBarStyle";
-export default function NavBarr() {
+export default function NavBarr({ name }) {
   const { userData } = useContext(userContext);
   const navigate = useNavigate();
-  const pageName = "Responder";
   return (
     <NavBarrContainer>
       <TitleArticle
@@ -25,7 +24,7 @@ export default function NavBarr() {
         <h1 className="sm">D</h1>
       </TitleArticle>
       <PageNameArticle>
-        <h1>{pageName}</h1>
+        <h1>{name}</h1>
       </PageNameArticle>
       <UserArticle>
         <img

@@ -50,6 +50,7 @@ export const PageNameArticle = styled.article`
     font-family: "Roboto", sans-serif;
     font-size: 25px;
     font-weight: 700;
+    text-align: center;
   }
 `;
 
