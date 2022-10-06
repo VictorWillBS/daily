@@ -64,6 +64,7 @@ export default function QuestionCards({
       >
         <IconContainer>
           <button
+            className="delete"
             onClick={(e) => {
               deleteQuestion(e);
             }}
@@ -83,6 +84,7 @@ export default function QuestionCards({
         />
         <IconContainer>
           <button
+            className="create"
             onClick={(e) => {
               submit(e);
             }}
@@ -111,13 +113,29 @@ const CardContainer = styled.article`
 `;
 
 const IconContainer = styled.form`
-  max-width: 20%;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 100%;
   button {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+
     border: none;
     background-color: rgba(0, 0, 0, 0);
+  }
+
+  .create:hover {
+    background-color: #9edd81;
+  }
+  .delete:hover {
+    background-color: #fb8484;
   }
 `;
 
