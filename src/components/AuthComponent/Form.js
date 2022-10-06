@@ -12,6 +12,7 @@ export default function Form({ isSignUp }) {
     try {
       if (isSignUp) {
         await axios.post(`${process.env.REACT_APP_URL_API}/signup`, dataUser);
+        navigate("/sign-in");
         return;
       }
 
@@ -24,8 +25,10 @@ export default function Form({ isSignUp }) {
       );
       setUserData({ ...userData, ...data });
       localStorage.setItem("token", data.token);
-      localStorage.setItem("user_img", data.photo);
-      isSignUp ? navigate("/") : navigate("/answer");
+      if (data.photo) {
+        localStorage.setItem("user_img", data.photo);
+      }
+      navigate("/");
     } catch (error) {
       alert(`não foi possível concluir ${isSignUp ? "cadastro" : "login"}.`);
     }
@@ -38,7 +41,10 @@ export default function Form({ isSignUp }) {
         setDataUser({ ...dataUser, name: event.target.value });
         break;
       case "email":
-        setDataUser({ ...dataUser, email: event.target.value });
+        setDataUser({
+          ...dataUser,
+          email: event.target.value.replace(" ", ""),
+        });
         break;
       case "password":
         setDataUser({ ...dataUser, password: event.target.value });
