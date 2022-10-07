@@ -1,6 +1,6 @@
 import LoginPage from "./AuthComponent/LoginPage";
 import SingupPage from "./AuthComponent/SignupPage";
-import AnswerPage from "./Today/AnswerPage";
+import TodayAnswerPage from "./Today/TodayAnswerPage";
 import { userContext } from "../context/userContext";
 import GlobalStyled from "./GlobalStyle/globalStyled";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path="/sign-in" element={<LoginPage />} />
           <Route path="/sign-up" element={<SingupPage />} />
-          <Route path="/" element={<AnswerPage />} />
+          <Route path="/" element={<TodayAnswerPage />} />
           <Route path="/day/:date" element={<DayPage />} />
         </Routes>
       </BrowserRouter>
