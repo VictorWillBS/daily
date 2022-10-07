@@ -8,16 +8,17 @@ function errorTratment(alert) {
   if (alert.status === 422) {
     return "Por favor, preencha todos os campos necessários.";
   }
-  if (alert.status === 401) {
+  if (alert.status === 401 && alert.msg === "Invalid Token.") {
     return "Desculpe,você foi desconectado.";
   }
-  return;
+  return alert.msg;
 }
 
 export default function MessageAlert({ alert }) {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
-    if (!alert || !alert.msg) {
+    if (!alert || (!alert.msg && !alert.status)) {
+      console.log(alert);
       setVisible(false);
       return;
     }
@@ -28,12 +29,10 @@ export default function MessageAlert({ alert }) {
   }, [alert]);
   return (
     <>
-      {visible ? (
+      {visible && (
         <Container>
           <MessageBox type={alert.type}>{errorTratment(alert)}</MessageBox>
         </Container>
-      ) : (
-        ""
       )}
     </>
   );
