@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Container, EmotionFace, EmotionName } from "./EmotionStyle";
-import { ImSmile, ImSad, ImNeutral } from "react-icons/im";
+import { ImSmile, ImSad, ImNeutral, ImWondering } from "react-icons/im";
 import { IconContext } from "react-icons";
 import { MdOutlineHelpOutline } from "react-icons/md";
 import axios from "axios";
 export default function EmotionAnswered({ date, config }) {
-  const [felling, setFelling] = useState("Não Lembro:/");
+  const [felling, setFelling] = useState("----");
   const [color, setColor] = useState("");
   const [emoji, setEmoji] = useState("");
 
@@ -39,7 +39,8 @@ export default function EmotionAnswered({ date, config }) {
         if (res.data.length) {
           setFelling(res.data[0].felling);
         } else {
-          setFelling("Não Lembro:/");
+          setFelling("Não registrado ");
+          setEmoji(<ImWondering />);
         }
       });
   }, [date]);
@@ -60,7 +61,9 @@ export default function EmotionAnswered({ date, config }) {
           {emoji}
         </IconContext.Provider>
       </EmotionFace>
-      <EmotionName color={color}>{felling}</EmotionName>
+      <EmotionName color={color}>
+        <p>{felling}</p>
+      </EmotionName>
     </Container>
   );
 }

@@ -20,12 +20,10 @@ export const EmotionName = styled.article`
   display: flex;
   justify-content: center;
   align-items: center;
-  h4 {
-    font-family: "Roboto", sans-serif;
-    font-style: italic;
+  p {
     font-weight: 400;
     word-break: break-all;
-    font-size: 20px;
+    font-size: 16px;
   }
   option {
     width: 100%;
