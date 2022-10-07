@@ -9,7 +9,7 @@ export const NavBarrContainer = styled.section`
   align-items: center;
   justify-content: space-between;
   border-radius: 0 0 10px 10px;
-  background-color: #003b76;
+  background-color: #04294f;
   position: absolute;
   left: 0;
   top: 0;
