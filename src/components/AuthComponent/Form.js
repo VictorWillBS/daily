@@ -3,10 +3,11 @@ import axios from "axios";
 import { FormStyled } from "./authStyle";
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../../context/userContext";
-export default function Form({ isSignUp }) {
+export default function Form({ isSignUp, inputdata, setInputdata, setAlert }) {
   const navigate = useNavigate();
   const [dataUser, setDataUser] = useState({});
   const { userData, setUserData } = useContext(userContext);
+
   async function submit(event) {
     event.preventDefault();
     try {
@@ -30,10 +31,13 @@ export default function Form({ isSignUp }) {
       }
       navigate("/");
     } catch (error) {
-      alert(`não foi possível concluir ${isSignUp ? "cadastro" : "login"}.`);
+      setAlert({
+        type: "error",
+        status: error.response.status,
+        msg: error.response.data,
+      });
     }
   }
-
   function controlInput(event, type) {
     console.log(+"asdasd");
     switch (type) {
@@ -56,6 +60,7 @@ export default function Form({ isSignUp }) {
         return;
     }
   }
+
   return (
     <FormStyled>
       <article>
@@ -66,6 +71,7 @@ export default function Form({ isSignUp }) {
               controlInput(e, "name");
             }}
             value={dataUser.name}
+            data-cy="name"
           />
         ) : (
           ""
@@ -76,6 +82,7 @@ export default function Form({ isSignUp }) {
             controlInput(e, "email");
           }}
           value={dataUser.email}
+          data-cy="email"
         />
         <input
           type="password"
@@ -84,6 +91,7 @@ export default function Form({ isSignUp }) {
             controlInput(e, "password");
           }}
           value={dataUser.password}
+          data-cy="password"
         />
         {isSignUp ? (
           <input
@@ -92,6 +100,7 @@ export default function Form({ isSignUp }) {
               controlInput(e, "photo");
             }}
             value={dataUser.photo}
+            data-cy="photo"
           />
         ) : (
           ""
