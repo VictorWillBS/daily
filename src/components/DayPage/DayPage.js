@@ -1,7 +1,6 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { userContext } from "../../context/userContext";
 import CardAnswered from "../QuestionCards/cardAnswered";
 import NavBarr from "../NavBarr/NavBar";
 import CalendarContent from "../Today/calendar";
@@ -11,7 +10,6 @@ import {
   DisplayContainer,
   Console,
   RightContent,
-  InputSide,
   LeftContent,
 } from "./DayPageStyle";
 import EmotionAnswered from "../EmotionCards/EmotionAnswerd";
