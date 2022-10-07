@@ -13,12 +13,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function redirect(categoryData, navigate) {
-  if (categoryData.name === "logout") {
+  if (categoryData.name === "Logout") {
     localStorage.clear();
     navigate(categoryData.link);
     return;
   }
-  if (categoryData.name === "Calendário") {
+  if (categoryData.name === "Respondidas") {
     const date = generateDate(new Date());
     navigate(`${categoryData.link}/${date}`);
     return;
@@ -35,7 +35,7 @@ function Category({ categories, menuActive }) {
       link: "/",
     },
     calendario: {
-      name: "Calendário",
+      name: "Respondidas",
       icon: <IoCalendarOutline />,
       link: "/day",
     },
@@ -45,7 +45,7 @@ function Category({ categories, menuActive }) {
       link: "/testeMen",
     },
     logout: {
-      name: "logout",
+      name: "Logout",
       icon: <IoLogOutOutline />,
       link: "/sign-in",
     },
@@ -53,17 +53,15 @@ function Category({ categories, menuActive }) {
   return categories.map((category) => {
     return (
       <article className={`category-${menuActive}`}>
-        <div>
-          <figure
-            onClick={() => {
-              redirect(hashCategories[category], navigate);
-            }}
-          >
-            {hashCategories[category].icon}
-          </figure>
-          <Link to={hashCategories[category].link}>
+        <div
+          onClick={() => {
+            redirect(hashCategories[category], navigate);
+          }}
+        >
+          <figure>{hashCategories[category].icon}</figure>
+          <article className="category-name">
             <h1>{hashCategories[category].name}</h1>
-          </Link>
+          </article>
         </div>
       </article>
     );

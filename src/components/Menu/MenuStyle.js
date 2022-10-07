@@ -66,7 +66,7 @@ export const CategoryStyled = styled.article`
     align-items: center;
     border-radius: 5px;
     :hover {
-      filter: brightness(1.1);
+      filter: brightness(1.2);
     }
   }
 
@@ -77,14 +77,17 @@ export const CategoryStyled = styled.article`
     width: 30px;
     height: 30px;
   }
-  div > a {
+  div > .category-name {
     width: 100%;
     text-align: center;
+    :hover {
+      filter: none;
+    }
   }
   h1 {
     color: white;
     font-family: "Roboto", sans-serif;
-    font-size: 25px;
+    font-size: 23px;
     font-weight: 700;
   }
   @media (min-width: 0) and (max-width: 1500px) {
@@ -94,7 +97,7 @@ export const CategoryStyled = styled.article`
     div {
       justify-content: center;
     }
-    a {
+    .category-name {
       display: none;
     }
   }
