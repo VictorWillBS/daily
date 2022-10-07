@@ -118,3 +118,17 @@ export const BGImage = styled.img`
   justify-content: center;
   object-position: 80% 60%;
 `;
+
+export const HelpSection = styled.section`
+  display: flex;
+  margin-top: 30px;
+  height: 70px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+`;
+
+export const HelpText = styled.p`
+  font-size: 14px;
+  color: ${(props) => (props.correct ? "green" : "#CDCDCD")};
+`;
