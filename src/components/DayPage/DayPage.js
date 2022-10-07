@@ -11,6 +11,7 @@ import {
   Console,
   RightContent,
   LeftContent,
+  SectionTitle,
 } from "./DayPageStyle";
 import EmotionAnswered from "../EmotionCards/EmotionAnswerd";
 import Menu from "../Menu/Menu";
@@ -64,10 +65,15 @@ export default function DayPage() {
               <CalendarContent />
             </LeftContent>
             <RightContent>
-              <div className="emotion-box">
+              <div className="emotion-mobile">
+                <SectionTitle>
+                  <h3>Você se sentiu esse dia</h3>
+                </SectionTitle>
                 <EmotionAnswered date={date} config={config} />
               </div>
-
+              <SectionTitle>
+                <h3>Suas respostas</h3>
+              </SectionTitle>
               {answered.length
                 ? answered.map((answer) => {
                     return (
@@ -78,6 +84,9 @@ export default function DayPage() {
                     );
                   })
                 : ""}
+              <div className="calendar-mobile">
+                <CalendarContent />
+              </div>
             </RightContent>
           </div>
         </Console>

@@ -25,6 +25,7 @@ export const Console = styled.section`
   border-radius: 60px;
   background-color: #003b76;
   padding: 20px;
+  overflow: scroll;
   && > div {
     display: flex;
     flex-direction: row;
@@ -34,15 +35,15 @@ export const Console = styled.section`
 export const RightContent = styled.section`
   width: 100%;
   min-height: 530px;
-  max-height: 600px;
-
+  max-height: 620px;
   margin-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   overflow: scroll;
-  .emotion-box {
+  .emotion-mobile,
+  .calendar-mobile {
     display: none;
     width: 100%;
   }
@@ -50,10 +51,15 @@ export const RightContent = styled.section`
     width: 0px;
   }
   @media (min-width: 0) and (max-width: 750px) {
-    .emotion-box {
+    .emotion-mobile {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      margin-bottom: 10px;
+    }
+    .calendar-mobile {
+      display: inherit;
     }
   }
 `;
@@ -96,4 +102,17 @@ export const Decoration = styled.section`
     border-radius: 50px;
   }
   margin-bottom: 5px;
+`;
+
+export const SectionTitle = styled.article`
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+  h3 {
+    font-family: "Roboto", sans-serif;
+
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+  }
 `;
