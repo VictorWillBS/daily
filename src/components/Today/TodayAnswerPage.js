@@ -39,8 +39,15 @@ export default function TodayAnswerPage() {
         setQuestions([...res.data].reverse());
       })
       .catch((err) => {
-        alert("deu ruim");
-        navigate("/sign-in");
+        setAlert({
+          type: "error",
+          status: err.response.status,
+          msg: err.response.data,
+        });
+        setTimeout(() => {
+          navigate("/sign-in");
+          localStorage.clear();
+        }, 3000);
       });
   }, [changeQuestion]);
   return (
