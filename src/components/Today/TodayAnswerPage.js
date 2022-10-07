@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   ContainerPage,
@@ -9,8 +9,8 @@ import {
   QuestionContainer,
   InputSide,
   CalendarSide,
+  SectionTitle,
 } from "./TodayAnswerStyle";
-import { userContext } from "../../context/userContext";
 import EmotionCard from "../EmotionCards/EmotionCard";
 import QuestionCards from "../QuestionCards/QuestionsCards";
 import Menu from "../Menu/Menu";
@@ -18,7 +18,8 @@ import NavBarr from "../NavBarr/NavBar";
 import CreateQuestion from "../QuestionCards/createQuestion";
 import CalendarContent from "./calendar";
 import MessageAlert from "../MessageAlert/MessageAlert";
-export default function AnswerPage() {
+
+export default function TodayAnswerPage() {
   const [questions, setQuestions] = useState(null);
   const [alert, setAlert] = useState(null);
   const [changeQuestion, setChangeQuestion] = useState(false);
@@ -54,8 +55,15 @@ export default function AnswerPage() {
           </Decoration>
           <div className="subConsole">
             <InputSide>
+              <SectionTitle>
+                <h3>Registre sua emoção</h3>
+              </SectionTitle>
               <EmotionCard config={config} />
+
               <QuestionContainer>
+                <SectionTitle>
+                  <h3>Responder as perguntas diárias</h3>
+                </SectionTitle>
                 <div className="question-Box">
                   <CreateQuestion
                     changeQuestion={changeQuestion}
@@ -99,7 +107,11 @@ export default function AnswerPage() {
                 </div>
               </QuestionContainer>
             </InputSide>
+
             <CalendarSide onClick={() => console.log(changeQuestion)}>
+              <SectionTitle>
+                <h3>Veja suas repostas de qualquer dia</h3>
+              </SectionTitle>
               <CalendarContent />
             </CalendarSide>
           </div>
