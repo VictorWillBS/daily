@@ -31,7 +31,7 @@ describe("Question Tests", () => {
     cy.wait("@PostQuestion");
     cy.get('textarea[placeholder="teste"]').type("resposta");
     cy.intercept("POST", "/answer").as("SendQuestion");
-    cy.get('[data-cy="send"]').click();
+    cy.get('[data-cy="send1"]').click();
     cy.wait("@SendQuestion");
     cy.get('textarea[placeholder="resposta"]').should("be.visible");
   });
