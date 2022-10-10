@@ -108,6 +108,7 @@ export default function Form({ isSignUp, inputdata, setInputdata, setAlert }) {
       </article>
       <button
         type="submit"
+        data-cy="submit"
         onClick={async (e) => {
           await submit(e);
         }}
