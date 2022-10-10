@@ -96,7 +96,7 @@ export default function QuestionCards({
         />
         <IconContainer>
           <button
-            data-cy="send"
+            data-cy={`send${id}`}
             className="create"
             onClick={(e) => {
               submit(e);
