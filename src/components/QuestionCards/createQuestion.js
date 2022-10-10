@@ -51,6 +51,7 @@ export default function CreateQuestion({
           type="textarea"
           placeholder="Criar Nova Pergunta"
           value={describe}
+          data-cy="inputQuestion"
           onChange={(e) => {
             inputControl(e);
           }}
@@ -67,6 +68,7 @@ export default function CreateQuestion({
         >
           <IconContainer>
             <button
+              data-cy="submitQuestion"
               className="create"
               onClick={(e) => {
                 submit(e);

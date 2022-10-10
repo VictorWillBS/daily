@@ -61,7 +61,7 @@ export default function QuestionCards({
   }
 
   return (
-    <CardContainer color={answered}>
+    <CardContainer color={answered} data-cy="question">
       <IconContext.Provider
         value={{
           style: {
@@ -74,6 +74,7 @@ export default function QuestionCards({
       >
         <IconContainer>
           <button
+            data-cy="delete"
             className="delete"
             onClick={(e) => {
               deleteQuestion(e);
@@ -88,12 +89,14 @@ export default function QuestionCards({
           placeholder={children}
           value={describe}
           disabled={answered}
+          data-cy="questionTextArea"
           onChange={(e) => {
             inputControl(e);
           }}
         />
         <IconContainer>
           <button
+            data-cy="send"
             className="create"
             onClick={(e) => {
               submit(e);
