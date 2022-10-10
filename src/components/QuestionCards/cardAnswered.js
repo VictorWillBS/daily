@@ -1,14 +1,14 @@
 import styled from "styled-components";
 export default function CardAnswered({ answer, question, children }) {
   return (
-    <CardContainer answered={Boolean(answer.length)}>
+    <CardContainer answered={Boolean(answer.length)} data-cy="cardAnswered">
       <div>
-        <QuestionText>
+        <QuestionText data-cy="questionTitle">
           <p>{question}</p>
         </QuestionText>
         <DivisionDoted />
       </div>
-      <AnswerText>
+      <AnswerText data-cy="answer">
         <p>{answer.length ? answer[0].answer : "Não respondida"}</p>
       </AnswerText>
     </CardContainer>
