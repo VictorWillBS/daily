@@ -32,7 +32,7 @@ function Category({ categories, menuActive }) {
     responder: {
       name: "Responder",
       icon: <IoAddCircleOutline />,
-      link: "/",
+      link: "/answer",
     },
     calendario: {
       name: "Respondidas",
