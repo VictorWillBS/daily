@@ -35,13 +35,13 @@ export default function SingupPage() {
         />
         <StyledLink to="/sign-in">Não tem conta ainda? Cadastre-se!</StyledLink>
         <HelpSection>
-          <HelpText>Photo: Não é obrigatória.</HelpText>
           <HelpText correct={inputdata.email}>
             Email: Deve ser um email valido.
           </HelpText>
           <HelpText correct={inputdata.password}>
             Senha: Deve ter entre 10 - 30 caracteres.
           </HelpText>
+          <HelpText>Photo:Deve ser um Link(Não obrigatória).</HelpText>
         </HelpSection>
       </UserInputSide>
     </TotalContainer>

@@ -45,7 +45,7 @@ export default function TodayAnswerPage() {
           msg: err.response.data,
         });
         setTimeout(() => {
-          navigate("/sign-in");
+          navigate("/");
           localStorage.clear();
         }, 3000);
       });

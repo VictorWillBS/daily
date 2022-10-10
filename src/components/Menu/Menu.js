@@ -42,7 +42,7 @@ function Category({ categories, menuActive }) {
     logout: {
       name: "Logout",
       icon: <IoLogOutOutline />,
-      link: "/sign-in",
+      link: "/",
     },
   };
   return categories.map((category) => {

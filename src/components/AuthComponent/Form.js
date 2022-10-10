@@ -13,7 +13,7 @@ export default function Form({ isSignUp, inputdata, setInputdata, setAlert }) {
     try {
       if (isSignUp) {
         await axios.post(`${process.env.REACT_APP_URL_API}/signup`, dataUser);
-        navigate("/sign-in");
+        navigate("/");
         return;
       }
 
@@ -29,7 +29,7 @@ export default function Form({ isSignUp, inputdata, setInputdata, setAlert }) {
       if (data.photo) {
         localStorage.setItem("user_img", data.photo);
       }
-      navigate("/");
+      navigate("/answer");
     } catch (error) {
       setAlert({
         type: "error",

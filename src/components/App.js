@@ -14,10 +14,11 @@ function App() {
       <BrowserRouter>
         <GlobalStyled />
         <Routes>
-          <Route path="/sign-in" element={<LoginPage />} />
+          <Route path="/" element={<LoginPage />} />
           <Route path="/sign-up" element={<SingupPage />} />
-          <Route path="/" element={<TodayAnswerPage />} />
+          <Route path="/answer" element={<TodayAnswerPage />} />
           <Route path="/day/:date" element={<DayPage />} />
+          <Route path="*" element={<div>Not found!</div>} />
         </Routes>
       </BrowserRouter>
     </userContext.Provider>
