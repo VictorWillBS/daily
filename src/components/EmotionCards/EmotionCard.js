@@ -79,6 +79,7 @@ export default function EmotionCard({ config }) {
     <Container>
       <EmotionFace color={color}>
         <figure
+          data-cy="emotionSubmit"
           onClick={(e) => {
             submit(e, day, felling);
           }}
@@ -102,12 +103,15 @@ export default function EmotionCard({ config }) {
           color={color}
           type="option"
           list="sentimentos"
+          data-cy="emotionInput"
           disabled={answered}
           value={felling}
           onChange={inputControl}
         >
           <option value="">Como foi seu Dia?</option>
-          <option value="Feliz">Aconteceram coisas boas hoje.</option>
+          <option value="Feliz" data-cy="Feliz">
+            Aconteceram coisas boas hoje.
+          </option>
           <option value="Neutro">Foi um dia Neutro.</option>
           <option value="Triste">Aconteceram coisas ruins hoje.</option>
         </InputStyled>
