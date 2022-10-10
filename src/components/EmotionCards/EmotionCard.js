@@ -5,12 +5,11 @@ import {
   InputStyled,
 } from "./EmotionStyle";
 import { IconContext } from "react-icons";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ImSmile, ImSad, ImNeutral } from "react-icons/im";
 import generateDate from "../../functions/generateDate";
 import { MdOutlineHelpOutline } from "react-icons/md";
-
-import { userContext } from "../../context/userContext";
+import { IoSend } from "react-icons/io5";
 import axios from "axios";
 
 export default function EmotionCard({ config }) {
@@ -24,19 +23,19 @@ export default function EmotionCard({ config }) {
     switch (felling) {
       case "Triste":
         setColor("#8CC1FF");
-        setEmoji(<ImSad />);
+        setEmoji(<ImSad className="emotion" />);
         break;
       case "Neutro":
         setColor("#DCDCDC");
-        setEmoji(<ImNeutral />);
+        setEmoji(<ImNeutral className="emotion" />);
 
         break;
       case "Feliz":
         setColor("#FFCD8C");
-        setEmoji(<ImSmile />);
+        setEmoji(<ImSmile className="emotion" />);
         break;
       default:
-        setEmoji(<MdOutlineHelpOutline />);
+        setEmoji(<IoSend className="emotion" />);
         setColor("#BF7EFF");
 
         return;
@@ -95,6 +94,7 @@ export default function EmotionCard({ config }) {
             }}
           >
             {emoji}
+            <IoSend className="send" />
           </IconContext.Provider>
         </figure>
       </EmotionFace>

@@ -43,6 +43,26 @@ export const EmotionFace = styled.article`
   display: flex;
   justify-content: center;
   align-items: center;
+  .send {
+    display: none;
+  }
+  &&:hover {
+    .emotion {
+      display: none;
+    }
+    .send {
+      display: initial;
+    }
+  }
+
+  @media (min-width: 0) and (max-width: 750px) {
+    .emotion {
+      display: none;
+    }
+    .send {
+      display: initial;
+    }
+  }
 `;
 
 export const InputStyled = styled.select`
