@@ -39,11 +39,6 @@ function Category({ categories, menuActive }) {
       icon: <IoCalendarOutline />,
       link: "/day",
     },
-    mensagem: {
-      name: "Mensagem",
-      icon: <IoMailOutline />,
-      link: "/testeMen",
-    },
     logout: {
       name: "Logout",
       icon: <IoLogOutOutline />,
@@ -101,7 +96,7 @@ export default function Menu() {
           <CategoryStyled>
             <Category
               menuActive={menuActive}
-              categories={["responder", "calendario", "mensagem", "logout"]}
+              categories={["responder", "calendario", "logout"]}
             />
           </CategoryStyled>{" "}
         </IconContext.Provider>
