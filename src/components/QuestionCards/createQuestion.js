@@ -49,7 +49,7 @@ export default function CreateQuestion({
         <InputStyled
           rows="3"
           type="textarea"
-          placeholder="Criar Nova Pergunta"
+          placeholder="Escreva aqui uma nova pergunta"
           value={describe}
           data-cy="inputQuestion"
           onChange={(e) => {
