@@ -2,7 +2,7 @@ import { CategoryStyled, MenuStyled, TotalContainer } from "./MenuStyle";
 import {
   IoAddCircleOutline,
   IoCalendarOutline,
-  IoMailOutline,
+  IoEnterOutline,
   IoChevronBackOutline,
   IoLogOutOutline,
 } from "react-icons/io5";
@@ -42,24 +42,37 @@ function Category({ categories, menuActive }) {
     logout: {
       name: "Logout",
       icon: <IoLogOutOutline />,
+      link: "/home",
+    },
+    login: {
+      name: "Login",
+      icon: <IoEnterOutline />,
       link: "/",
     },
   };
   return categories.map((category) => {
-    return (
-      <article className={`category-${menuActive}`}>
-        <div
-          onClick={() => {
-            redirect(hashCategories[category], navigate);
-          }}
-        >
-          <figure>{hashCategories[category].icon}</figure>
-          <article className="category-name">
-            <h1>{hashCategories[category].name}</h1>
-          </article>
-        </div>
-      </article>
-    );
+    const token = localStorage.getItem("token");
+    console.log(Boolean(token));
+    if (!token && hashCategories[category].name === "Logout") {
+      return null;
+    } else if (token && hashCategories[category].name === "Login") {
+      return null;
+    } else {
+      return (
+        <article className={`category-${menuActive}`}>
+          <div
+            onClick={() => {
+              redirect(hashCategories[category], navigate);
+            }}
+          >
+            <figure>{hashCategories[category].icon}</figure>
+            <article className="category-name">
+              <h1>{hashCategories[category].name}</h1>
+            </article>
+          </div>
+        </article>
+      );
+    }
   });
 }
 function togleActive(menuActive, setMenuActive) {
@@ -96,9 +109,9 @@ export default function Menu() {
           <CategoryStyled>
             <Category
               menuActive={menuActive}
-              categories={["responder", "calendario", "logout"]}
+              categories={["responder", "calendario",'login','logout']}
             />
-          </CategoryStyled>{" "}
+          </CategoryStyled>
         </IconContext.Provider>
       </MenuStyled>
     </TotalContainer>
