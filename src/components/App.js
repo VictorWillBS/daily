@@ -6,6 +6,7 @@ import GlobalStyled from "./GlobalStyle/globalStyled";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import DayPage from "./DayPage/DayPage";
+import { LandPage } from "./LandPage";
 
 function App() {
   const [userData, setUserData] = useState({});
@@ -15,6 +16,7 @@ function App() {
         <GlobalStyled />
         <Routes>
           <Route path="/" element={<LoginPage />} />
+          <Route path="/home" element={<LandPage />} />
           <Route path="/sign-up" element={<SingupPage />} />
           <Route path="/answer" element={<TodayAnswerPage />} />
           <Route path="/day/:date" element={<DayPage />} />
