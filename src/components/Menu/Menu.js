@@ -42,12 +42,12 @@ function Category({ categories, menuActive }) {
     logout: {
       name: "Logout",
       icon: <IoLogOutOutline />,
-      link: "/home",
+      link: "/",
     },
     login: {
       name: "Login",
       icon: <IoEnterOutline />,
-      link: "/",
+      link: "/sign-in",
     },
   };
   return categories.map((category) => {

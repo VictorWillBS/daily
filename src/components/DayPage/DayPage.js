@@ -44,7 +44,7 @@ export default function DayPage() {
           status: err.response.status,
         });
         setTimeout(() => {
-          navigate("/");
+          navigate("/sign-in");
         }, 5000);
       });
   }, [date]);
