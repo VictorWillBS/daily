@@ -34,7 +34,7 @@ function DescriptionMobile() {
 export function LandPage() {
   return (
     <Page>
-      <NavBarr />
+      <NavBarr name={"Home"} />
       <Menu />
       <Content>
         <TitleSection>
@@ -80,20 +80,23 @@ export function LandPage() {
 const Content = styled.section`
   max-width: 1800px;
   width: 100%;
-  height: 100vh;
-  padding-top: 200px;
+  height: 100%;
+  padding-top: 170px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
 const TitleSection = styled.section`
-  padding: 0 11% 3% 11%;
+  padding: 0 11% 8% 11%;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (max-width: 1150px) {
+    padding-bottom: 5%;
+  }
 `;
 const Page = styled.section`
   width: 100%;
@@ -104,8 +107,11 @@ const Page = styled.section`
   align-items: center;
   background-size: contain;
   background: #fff url(${background}) no-repeat scroll top center;
-  @media (max-width: 1150px) {
-    background-position: 30% 60%;
+  @media (min-width: 701px) and (max-width: 1150px) {
+    background-position: 30% 20%;
+  }
+  @media (max-width: 700px) {
+    background-position:  30% 30%;
   }
 `;
 
