@@ -109,7 +109,7 @@ export default function Menu() {
           <CategoryStyled>
             <Category
               menuActive={menuActive}
-              categories={["responder", "calendario",'login','logout']}
+              categories={["responder", "calendario", "login", "logout"]}
             />
           </CategoryStyled>
         </IconContext.Provider>
