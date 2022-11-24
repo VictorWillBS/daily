@@ -33,7 +33,7 @@ export default function SingupPage() {
           inputdata={inputdata}
           setAlert={setAlert}
         />
-        <StyledLink to="/">Não tem conta ainda? Cadastre-se!</StyledLink>
+        <StyledLink to="/sign-in">Já tem conta? Entre já!</StyledLink>
         <HelpSection>
           <HelpText correct={inputdata.email}>
             Email: Deve ser um email valido.
